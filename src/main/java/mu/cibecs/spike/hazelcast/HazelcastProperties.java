@@ -8,8 +8,8 @@ import lombok.Setter;
 public class HazelcastProperties {
 
     private DiscoveryMode discoveryMode = DiscoveryMode.DEFAULT;
-    private String discoveryKubernetesNamespace = "cibecs";
-    private String discoveryKubernetesServiceName = "demo-service";
+    private String discoveryKubernetesNamespace = "jx-staging";
+    private String discoveryKubernetesServiceName = "demo";
 
     public enum DiscoveryMode {
         DEFAULT, KUBERNETES
