@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Profile;
 public class HazelcastConfiguration {
 
     @Bean
-    @Profile("!hazelcast")
+    @Profile("!kubernetes")
     public Config config() {
         Config cfg = new Config();
         cfg.setInstanceName("test");
@@ -39,14 +39,14 @@ public class HazelcastConfiguration {
 
 
     @Bean
-    @Profile("hazelcast")
+    @Profile("kubernetes")
     @ConfigurationProperties("hazelcast.cluster")
     public HazelcastProperties hazelcastProperties() {
         return new HazelcastProperties();
     }
 
     @Bean
-    @Profile("hazelcast")
+    @Profile("kubernetes")
     public Config kubernetesConfig() {
         Config config = new Config();
         if (HazelcastProperties.DiscoveryMode.KUBERNETES.equals(hazelcastProperties().getDiscoveryMode())) {
