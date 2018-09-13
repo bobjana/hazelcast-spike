@@ -20,11 +20,11 @@ spec:
       containers:
       - name: {{ .Chart.Name }}
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        imagePullPolicy: IfNotPresent
         ports:
           - containerPort: {{ .Values.service.internalPort }}
         env:
-          - name KUBERNETES_NAMESPACE
+          - name: KUBERNETES_NAMESPACE
             valueFrom:
               fieldRef:
                 fieldPath: metadata.namespace
